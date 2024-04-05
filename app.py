@@ -13,7 +13,7 @@ import numpy as np
 
 # Load the model
 def load_model():
-    MODEL_PATH = 'C:/Users/User/Desktop/Illzzik-main/illzzik_model_trained.hdf5'
+    MODEL_PATH = 'illzzik_model_trained.hdf5'
     model = tf.keras.models.load_model(MODEL_PATH)
     return model
 

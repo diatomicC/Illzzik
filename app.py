@@ -1,6 +1,6 @@
 import openai
 import streamlit as st
-from gtts import gTTS
+
 from pydub import AudioSegment
 from pydub.playback import play
 from streamlit_option_menu import option_menu
@@ -76,13 +76,6 @@ def calculate_dynamic_height(response_text, base_height=30, characters_per_line=
     dynamic_height = int(base_height + (num_lines * line_height))
     return dynamic_height
 
-def play_text_to_speech(text):
-    # Convert text to speech
-    tts = gTTS(text=text, lang='en', slow=False)
-    with NamedTemporaryFile(delete=True) as fp:
-        tts.save(f'{fp.name}.mp3')
-        sound = AudioSegment.from_mp3(f'{fp.name}.mp3')
-        play(sound)
 
 # Sidebar menu for navigation
 with st.sidebar:
@@ -169,9 +162,6 @@ elif choose == "Chat with Med assistant!":
         dynamic_height = calculate_dynamic_height(assistant_response)
         st.text_area("Assistant", value=assistant_response, disabled=True, height=dynamic_height, key=f"assistant_response_{index}")
         
-        # Now play the assistant's response as speech
-        play_text_to_speech(assistant_response)
-
     state = st.session_state
     if 'text_received' not in state:
         state.text_received = []

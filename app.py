@@ -8,14 +8,10 @@ from tempfile import NamedTemporaryFile
 import tensorflow as tf
 from PIL import Image, ImageOps
 import numpy as np
-
+from tensorflow.keras.models import load_model
 # Load the model
 
-def load_model():
-	model = tf.keras.models.load_model('./model_trained.hdf5')
-	return model
-
-model = load_model()
+model = load_model('./model_trained.hdf5')
 
 # # Load the model
 # def load_model():

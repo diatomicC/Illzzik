@@ -1,5 +1,4 @@
 tensorflow==2.16.1
-keras==2.15.0
 streamlit==1.0.0  # Adjust this version as needed to find compatibility
 Pillow==9.4.0
 numpy==1.25.2

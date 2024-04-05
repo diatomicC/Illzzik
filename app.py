@@ -13,14 +13,6 @@ from tensorflow.keras.models import load_model
 
 model = load_model('./model_trained.hdf5')
 
-# # Load the model
-# def load_model():
-#     MODEL_PATH = 'illzzik_model_trained.hdf5'
-#     model = tf.keras.models.load_model(MODEL_PATH)
-#     return model
-
-model = load_model()
-
 
 # Sidebar for API Key Input
 api_key_input = st.sidebar.text_input("Enter your OpenAI API key:", type="password")

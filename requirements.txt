@@ -1,5 +1,5 @@
-streamlit==1.25.0
-tensorflow==2.9.1  # Use the version compatible with your model
+tensorflow==2.9.1
+streamlit==1.0.0  # Adjust this version as needed to find compatibility
 Pillow==9.4.0
 numpy==1.25.2
 openai==0.27.8

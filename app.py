@@ -1,8 +1,6 @@
 import openai
 import streamlit as st
 
-from pydub import AudioSegment
-from pydub.playback import play
 from streamlit_option_menu import option_menu
 from streamlit_mic_recorder import speech_to_text
 from tempfile import NamedTemporaryFile

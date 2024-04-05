@@ -11,20 +11,14 @@ import tensorflow as tf
 from PIL import Image, ImageOps
 import numpy as np
 
-import requests
-
-def download_model(url, model_path):
-    r = requests.get(url)
-    with open(model_path, 'wb') as f:
-        f.write(r.content)
+# Load the model
 
 def load_model():
-    MODEL_URL = 'https://github.com/diatomicC/Illzzik/blob/main/illzzik_model_trained.hdf5'
-    MODEL_PATH = 'illzzik_model_trained.hdf5'
-    download_model(MODEL_URL, MODEL_PATH)
-    model = tf.keras.models.load_model(MODEL_PATH)
-    return model
-    
+	model = tf.keras.models.load_model('./model_trained.hdf5')
+	return model
+
+model = load_model()
+
 # # Load the model
 # def load_model():
 #     MODEL_PATH = 'illzzik_model_trained.hdf5'

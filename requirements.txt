@@ -1,5 +1,5 @@
 tensorflow==2.16.1
-streamlit==1.0.0  # Adjust this version as needed to find compatibility
+streamlit==1.25.0  # Adjust this version as needed to find compatibility
 Pillow==9.4.0
 numpy==1.25.2
 openai==0.27.8

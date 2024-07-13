@@ -29,13 +29,9 @@ if submit_key:
     else:
         st.sidebar.error("Please enter a valid API Key.")
 
-# Usage of the API Key
-if 'openai_api_key' in st.session_state and st.session_state['openai_api_key']:
-    # Set the API Key for your application
-    openai.api_key = st.session_state['openai_api_key']
 
-    # Now you can make OpenAI API calls with the set API key
-    # Example: openai.Completion.create(...)
+if 'openai_api_key' in st.session_state and st.session_state['openai_api_key']:
+    openai.api_key = st.session_state['openai_api_key']
 
     st.write("API Key is set. You can now interact with OpenAI's services.")
 else:
@@ -46,7 +42,7 @@ else:
 def chat_with_openai(text):
     try:
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",  # Correct model name
+            model="gpt-3.5-turbo",  
             messages=[
                 {"role": "system", "content": "You are a senior friendly health assistant."},
                 {"role": "user", "content": f"Provide a detailed explanation of {text} in a clear and concise manner with markdown structure. Also tell what patient should do right now."}
@@ -57,7 +53,6 @@ def chat_with_openai(text):
         return str(e)  # For debugging purposes
 
 def calculate_dynamic_height(response_text, base_height=30, characters_per_line=20, line_height=10):
-    # Calculate dynamic height based on content length
     num_lines = max(1, len(response_text) / characters_per_line)
     dynamic_height = int(base_height + (num_lines * line_height))
     return dynamic_height
@@ -112,7 +107,6 @@ if choose == "Take picture to check":
                         'Basal cell carcinoma', 'Actinic keratoses', 'Vascular lesions', 'Dermatofibroma']
             prediction_message = f"Most likely to be {class_names[np.argmax(predictions)]} with a {confidence:.2f}% confidence."
 
-            # Using HTML to increase font size
             st.markdown(f"<h3 style='text-align: center; color: black;'>{prediction_message}</h3>", unsafe_allow_html=True)
 
 
@@ -141,9 +135,7 @@ elif choose == "Chat with Med assistant!":
         st.session_state.messages.append({"role": "user", "content": text})
         assistant_response = response.choices[0].message["content"]
         st.session_state.messages.append({"role": "assistant", "content": assistant_response})
-        
-        # Update UI with assistant's response before playing it as speech
-        # This is where you display the assistant's response in the UI
+
         index = len(st.session_state.messages) - 1  # Index of the latest message
         dynamic_height = calculate_dynamic_height(assistant_response)
         st.text_area("Assistant", value=assistant_response, disabled=True, height=dynamic_height, key=f"assistant_response_{index}")
